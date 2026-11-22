@@ -1,0 +1,60 @@
+/* MatchCenter — estilos isolados para incorporar em qualquer tela. */
+.mc-root {
+  --mc-bg: #101d26;
+  --mc-panel: #192c36;
+  --mc-line: #35505b;
+  --mc-text: #edf7f7;
+  --mc-muted: #adc4c7;
+  --mc-accent: #66ddae;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(10px, 2vw, 18px);
+  color: var(--mc-text);
+  background: var(--mc-bg);
+  border-radius: 15px;
+  font: 14px/1.4 system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+.mc-root *, .mc-root *::before, .mc-root *::after { box-sizing: border-box; }
+.mc-head, .mc-tactics, .mc-stats, .mc-events { background: var(--mc-panel); border: 1px solid var(--mc-line); border-radius: 10px; }
+.mc-head { padding: 10px 12px; margin-bottom: 10px; }
+.mc-teams { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 8px; text-align: center; font-weight: 700; }
+.mc-home-name, .mc-away-name { overflow-wrap: anywhere; }
+.mc-home-name { color: #8ac8ff; }
+.mc-away-name { color: #ffe08a; }
+.mc-score { font-size: clamp(20px, 5vw, 30px); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.mc-meta { display: flex; justify-content: center; gap: 12px; margin-top: 3px; color: var(--mc-muted); font-size: 12px; }
+.mc-clock { color: var(--mc-accent); font-weight: 700; font-variant-numeric: tabular-nums; }
+.mc-field { width: 100%; overflow: hidden; border: 1px solid var(--mc-line); border-radius: 10px; background: #1b754f; }
+.mc-field canvas { display: block; width: 100%; aspect-ratio: 1000 / 620; }
+.mc-controls { display: flex; flex-wrap: wrap; align-items: end; gap: 8px; margin: 10px 0; }
+.mc-root button, .mc-root select { min-height: 42px; border: 1px solid #64828b; border-radius: 8px; color: var(--mc-text); background: #263e49; font: inherit; }
+.mc-root button { padding: 8px 14px; cursor: pointer; font-weight: 700; }
+.mc-root button[data-action="confirm"] { margin-left: auto; background: #246b4f; }
+.mc-root button:hover:not(:disabled), .mc-root select:hover:not(:disabled) { border-color: var(--mc-accent); }
+.mc-root button:disabled, .mc-root select:disabled { opacity: .5; cursor: not-allowed; }
+.mc-root button:focus-visible, .mc-root select:focus-visible { outline: 3px solid #82eac0; outline-offset: 2px; }
+.mc-root label { display: flex; flex-direction: column; gap: 4px; color: var(--mc-muted); font-size: 12px; font-weight: 600; }
+.mc-root select { width: 100%; padding: 6px 25px 6px 9px; font-size: 14px; }
+.mc-tactics { padding: 10px; }
+.mc-tactic-note { margin: 0 0 9px; color: var(--mc-muted); font-size: 12px; }
+.mc-section-title { margin-bottom: 8px; font-size: 14px; font-weight: 750; }
+.mc-tactic-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.mc-bottom { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; margin-top: 10px; }
+.mc-stats, .mc-events { padding: 10px; min-width: 0; }
+.mc-stat-row { display: grid; grid-template-columns: 1fr 2fr 1fr; align-items: center; gap: 5px; padding: 5px 0; border-top: 1px solid var(--mc-line); text-align: center; font-variant-numeric: tabular-nums; }
+.mc-stat-row span { color: var(--mc-muted); font-size: 12px; }
+.mc-stat-row strong:first-child { color: #8ac8ff; }
+.mc-stat-row strong:last-child { color: #ffe08a; }
+.mc-event-list { max-height: 210px; overflow-y: auto; margin: 0; padding: 0; list-style: none; }
+.mc-event-list li { display: flex; gap: 8px; padding: 6px 0; border-top: 1px solid var(--mc-line); overflow-wrap: anywhere; }
+.mc-event-list strong { min-width: 30px; color: var(--mc-accent); font-variant-numeric: tabular-nums; }
+.mc-note { margin: 10px 0 0; color: var(--mc-muted); font-size: 11px; }
+@media (max-width: 500px) {
+  .mc-root { padding: 9px; border-radius: 8px; }
+  .mc-tactic-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mc-bottom { grid-template-columns: 1fr; }
+  .mc-controls button[data-action="confirm"] { margin-left: 0; }
+  .mc-event-list { max-height: 170px; }
+}
